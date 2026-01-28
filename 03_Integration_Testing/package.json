@@ -1,0 +1,21 @@
+{
+  "name": "integration_testing",
+  "version": "1.0.0",
+  "description": "Express REST API hex-to-rgb with unit and integration tests",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha \"test/**/*.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "chai": "^6.2.2",
+    "mocha": "^11.7.5",
+    "supertest": "^7.1.1"
+  }
+}

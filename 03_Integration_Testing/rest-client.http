@@ -1,0 +1,8 @@
+### OK
+GET http://localhost:3000/api/hex-to-rgb/ff00aa
+
+### 3-merkkinen heksi
+GET http://localhost:3000/api/hex-to-rgb/0f8
+
+### Virheellinen heksi
+GET http://localhost:3000/api/hex-to-rgb/zzzzzz
