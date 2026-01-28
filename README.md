@@ -8,6 +8,7 @@ Date: 2026-01-25
 JavaScript module for basic arithmetic operations with unit tests using Mocha + Chai (expect).
 
 The module includes add, subtract, multiply and divide functions.
+
 Division by zero throws an error ("ZeroDivision").
 
 ## Installation
