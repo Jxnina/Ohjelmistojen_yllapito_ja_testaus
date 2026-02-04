@@ -10,8 +10,6 @@ Toteutettiin REST API, joka muuntaa heksavarin RGB-arvoiksi. Lisaksi tehtiin yks
 - REST API -reitti: `src/app.js` (GET `/api/hex-to-rgb/:hex`)
 - Yksikkotestit: `test/unit/hexToRgb.test.js`
 - Integraatiotestit: `test/integration/hexRoute.test.js`
-  
-Logiikan erottaminen tekee koodista testattavan ja uudelleenkaytettavan. Integraatiotesti varmistaa, etta HTTP-reitti ja muunnoslogiikka toimivat oikein yhdessa.
 
 ## Projektin rakenne
 - `server.js` kaynnistaa Express-sovelluksen (portti 3000 oletuksena).
