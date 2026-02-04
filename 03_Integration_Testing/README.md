@@ -2,51 +2,78 @@
 
 Express REST API hex-to-rgb -muunnokselle, yksikkotestit ja integraatiotestit.
 
-## Mitä tehtiin
-Rakennettiin REST API, joka muuntaa heksavärin RGB-arvoiksi, sekä toteutettiin yksikkö- ja integraatiotestit muunnoslogiikalle ja API-reitille.
+## Mita tehtiin
+Toteutettiin REST API, joka muuntaa heksavarin RGB-arvoiksi. Lisaksi tehtiin yksikkotestit muunnoslogiikalle ja integraatiotestit HTTP-reitille.
 
-## Miten tehtiin
-- Muunnoslogiikka on eriytetty tiedostoon `src/hexToRgb.js`.
-- REST API -reitti on määritelty tiedostossa `src/app.js` (`GET /api/hex-to-rgb/:hex`).
-- Yksikkötestit löytyvät polusta `test/unit`, integraatiotestit polusta `test/integration`.
+## Miten toteutus on rakennettu
+- Muunnoslogiikka: `src/hexToRgb.js`
+- REST API -reitti: `src/app.js` (GET `/api/hex-to-rgb/:hex`)
+- Yksikkotestit: `test/unit/hexToRgb.test.js`
+- Integraatiotestit: `test/integration/hexRoute.test.js`
 
 ## Miksi tehtiin
-Logiikan erottaminen tekee koodista testattavan ja uudelleenkäytettävän. Integraatiotesti varmistaa, että HTTP-reitti ja muunnoslogiikka toimivat yhdessä oikein.
+Logiikan erottaminen tekee koodista testattavan ja uudelleenkaytettavan. Integraatiotesti varmistaa, etta HTTP-reitti ja muunnoslogiikka toimivat yhdessa oikein.
 
-## Asennus
+## Projektin rakenne
+- `server.js` kaynnistaa Express-sovelluksen (portti 3000 oletuksena).
+- `src/app.js` sisaltaa REST API -reitin ja virhekasittelyn.
+- `src/hexToRgb.js` sisaltaa muunnoslogiikan ja validoinnin.
+- `test/unit/hexToRgb.test.js` testaa muunnoslogiikan (unit).
+- `test/integration/hexRoute.test.js` testaa reitin toiminnan (integration).
+- `rest-client.http` sisaltaa valmiit REST Client -pyynnot.
+- `package.json` sisaltaa skriptit ja riippuvuudet.
+- `.gitignore` estaa `node_modules`, `.env` ja `.DS_Store` -tiedostot.
+
+## Kaytto
+Asennus:
+```bash
 npm install
+```
 
-## Kaynnistys
+Kaynnistys:
+```bash
 npm start
+```
 
-## Testit
+Testit:
+```bash
 npm test
+```
 
 ## API
+Reitti:
+```
 GET /api/hex-to-rgb/:hex
+```
 
 Esimerkki:
-- http://localhost:3000/api/hex-to-rgb/ff00aa
+```
+GET http://localhost:3000/api/hex-to-rgb/ff00aa
+```
 
 Vastaus:
+```json
 { "hex": "ff00aa", "r": 255, "g": 0, "b": 170 }
+```
 
-Virheellinen heksi palauttaa 400:
+Virheellinen heksi:
+```json
 { "error": "InvalidHex" }
+```
 
 ## REST Client / Postman
-Aja REST Client -pyynto tiedostosta `rest-client.http` tai tee sama pyynto Postmanissa.
+Voit testata REST API:n Postmanilla tai REST Clientilla.
 
-### Postman-testaus (esimerkit)
+Postman-esimerkki:
 1. Kaynnista palvelin: `npm start`
-2. Luo uusi `GET`-pyynto Postmanissa
-3. Kutsu:
-   - `http://localhost:3000/api/hex-to-rgb/ff00aa`
-   - Odotettu vastaus: `200 OK` ja `{ "hex": "ff00aa", "r": 255, "g": 0, "b": 170 }`
-4. Testaa virheellinen syote:
-   - `http://localhost:3000/api/hex-to-rgb/zzzzzz`
-   - Odotettu vastaus: `400` ja `{ "error": "InvalidHex" }`
+2. Luo uusi `GET`-pyynto
+3. Kutsu: `http://localhost:3000/api/hex-to-rgb/ff00aa`
+4. Odotettu vastaus: `200 OK` ja `{ "hex": "ff00aa", "r": 255, "g": 0, "b": 170 }`
+5. Virheellinen syote: `http://localhost:3000/api/hex-to-rgb/zzzzzz`
+6. Odotettu vastaus: `400` ja `{ "error": "InvalidHex" }`
 
-## Dokumentointi
-Lisaa PDF:aan kuvakaappaus testien tuloksista (esim. `npm test` ja REST Client/Postman -kutsu).
-Liita PDF:aan myos GitHub-repositorion URL (tai zip-arkiston mukana PDF).
+## Dokumentointi ja palautus
+PDF-dokumenttiin:
+- Kuvakaappaus `npm test` -ajosta (testitulokset).
+- Kuvakaappaus REST Client/Postman -kutsusta ja vastauksesta.
+- GitHub-repositorion URL (tai zip + PDF).
