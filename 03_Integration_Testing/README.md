@@ -2,17 +2,15 @@
 
 Express REST API hex-to-rgb -muunnokselle, yksikkotestit ja integraatiotestit.
 
-## Mita tehtiin
+## Tavoite
 Toteutettiin REST API, joka muuntaa heksavarin RGB-arvoiksi. Lisaksi tehtiin yksikkotestit muunnoslogiikalle ja integraatiotestit HTTP-reitille.
 
-## Miten toteutus on rakennettu
+## Toteutus
 - Muunnoslogiikka: `src/hexToRgb.js`
 - REST API -reitti: `src/app.js` (GET `/api/hex-to-rgb/:hex`)
 - Yksikkotestit: `test/unit/hexToRgb.test.js`
 - Integraatiotestit: `test/integration/hexRoute.test.js`
-
-## Miksi tehtiin
-Logiikan erottaminen tekee koodista testattavan ja uudelleenkaytettavan. Integraatiotesti varmistaa, etta HTTP-reitti ja muunnoslogiikka toimivat yhdessa oikein.
+Logiikan erottaminen tekee koodista testattavan ja uudelleenkaytettavan. Integraatiotesti varmistaa, etta HTTP-reitti ja muunnoslogiikka toimivat oikein yhdessa.
 
 ## Projektin rakenne
 - `server.js` kaynnistaa Express-sovelluksen (portti 3000 oletuksena).
@@ -24,7 +22,7 @@ Logiikan erottaminen tekee koodista testattavan ja uudelleenkaytettavan. Integra
 - `package.json` sisaltaa skriptit ja riippuvuudet.
 - `.gitignore` estaa `node_modules`, `.env` ja `.DS_Store` -tiedostot.
 
-## Kaytto
+## Kayttoohjeet
 Asennus:
 ```bash
 npm install
@@ -61,7 +59,7 @@ Virheellinen heksi:
 { "error": "InvalidHex" }
 ```
 
-## REST Client / Postman
+## REST-testaus
 Voit testata REST API:n Postmanilla tai REST Clientilla.
 
 Postman-esimerkki:
@@ -71,4 +69,3 @@ Postman-esimerkki:
 4. Odotettu vastaus: `200 OK` ja `{ "hex": "ff00aa", "r": 255, "g": 0, "b": 170 }`
 5. Virheellinen syote: `http://localhost:3000/api/hex-to-rgb/zzzzzz`
 6. Odotettu vastaus: `400` ja `{ "error": "InvalidHex" }`
-
