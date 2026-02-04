@@ -72,8 +72,3 @@ Postman-esimerkki:
 5. Virheellinen syote: `http://localhost:3000/api/hex-to-rgb/zzzzzz`
 6. Odotettu vastaus: `400` ja `{ "error": "InvalidHex" }`
 
-## Dokumentointi ja palautus
-PDF-dokumenttiin:
-- Kuvakaappaus `npm test` -ajosta (testitulokset).
-- Kuvakaappaus REST Client/Postman -kutsusta ja vastauksesta.
-- GitHub-repositorion URL (tai zip + PDF).
