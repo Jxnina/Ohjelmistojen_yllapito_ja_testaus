@@ -37,6 +37,7 @@ Testit:
 ```bash
 npm test
 ```
+![Unit and Integration Test Results](images/npm-test.png)
 
 ## API
 Reitti:
@@ -69,7 +70,4 @@ Postman-esimerkki:
 4. Odotettu vastaus: `200 OK` ja `{ "hex": "ff00aa", "r": 255, "g": 0, "b": 170 }`
 5. Virheellinen syote: `http://localhost:3000/api/hex-to-rgb/zzzzzz`
 6. Odotettu vastaus: `400` ja `{ "error": "InvalidHex" }`
-
-## Screenshots
-![Unit and Integration Test Results](images/npm-test.png)
 ![Postman REST API Response](images/postman-response.png)
