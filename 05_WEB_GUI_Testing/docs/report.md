@@ -11,6 +11,9 @@ Sovelluksen kuvakaappaus
 ## Testausmenetelmät
 - Manuaaliset UI‑testit selaimessa
 - API‑smoketestit `curl`‑kutsuilla
+- Responsiivisuuden tarkistus (mobiilinäkymä)
+- Saavutettavuus (Tab‑navigointi, fokus)
+- Selainyhteensopivuus (Safari)
 
 ## Testitulokset
 ### Manuaalitestit
@@ -18,6 +21,13 @@ Sovelluksen kuvakaappaus
 - Hex → RGB: PASS (Tulos: `rgb(255, 136, 0)` | Huomiot: sama kuin odotettu | Selain: Firefox | Päivä: 2026-02-10)
 - Validointi (RGB): PASS (Tulos: selain esti lähetyksen arvolla R=300 ja näytti oman virheilmoituksen | Huomiot: HTML5‑validointi | Selain: Firefox | Päivä: 2026-02-10)
 - Validointi (Hex): PASS (Tulos: API palautti 400 arvolla `abc` | Huomiot: UI näytti `rgb(undefined, undefined, undefined)` | Selain: Firefox | Päivä: 2026-02-10)
+- Responsiivisuus: PASS (Tulos: asettelu toimii myös pienessä ikkunassa | Selain: Firefox | Päivä: 2026-02-10)
+- Saavutettavuus (Tab‑navigointi): PASS (Firefox) / FAIL (Safari) (Tulos: Firefoxissa Tab toimii, Safarissa Tab ohittaa Convert‑napin | Päivä: 2026-02-10)
+- Selainyhteensopivuus: PASS (Tulos: toimii myös Safari‑selaimessa | Selain: Safari | Päivä: 2026-02-10)
+- Tyhjät kentät: PASS (Tulos: selain näyttää viestin “täytä tämä kenttä” | Selain: Firefox | Päivä: 2026-02-10)
+- Kopioi/liitä: PASS (Tulos: hex‑arvon liittäminen toimii normaalisti | Selain: Firefox | Päivä: 2026-02-10)
+- Kirjaimet RGB‑kentissä: PASS (Tulos: selain näyttää viestin “syötä numero” | Selain: Firefox | Päivä: 2026-02-10)
+- Liian suuri/pieni RGB‑arvo: PASS (Tulos: selain näyttää viestin “arvon pitää olla pienempi tai yhtä kuin 255” / “suurempi tai yhtä kuin 0” | Selain: Firefox | Päivä: 2026-02-10)
 
 ### API‑smoketestit
 - `/api/rgb-to-hex` arvoilla `r=64 g=128 b=192`: PASS (ajettu 2026-02-10, serveri portissa 3001)
@@ -39,3 +49,4 @@ Sovelluksen kuvakaappaus
 ## Löydökset
 - UI ei käsittele Hex‑virhettä siististi: 400‑vastauksen jälkeen tulokseksi tulee `rgb(undefined, undefined, undefined)` ja värilaatikko ei muutu. Toisto: kirjoita `abc` ja paina Convert kohdassa Hex → RGB. (Firefox, 2026-02-10)
 - API muuttaa RGB‑arvot rajojen sisään, eikä palauta odotettua 400‑virhettä. Esim. `r=-1` muuttuu `0` ja `r=256` muuttuu `255`.
+- Safari: Tab‑navigointi ohittaa Convert‑napin, joten pelkällä näppäimistöllä ei voi lähettää lomaketta. (Safari, 2026-02-10)
