@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RGB ⇄ Hex Converter</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <p class="eyebrow">Color Tools</p>
+        <h1>RGB ⇄ Hex Converter</h1>
+        <p class="lead"> UI that uses a REST API to convert colors both ways.</p>
+      </header>
+
+      <section class="card">
+        <h2>RGB → Hex</h2>
+        <form id="rgbForm" class="form">
+          <label>
+            R
+            <input type="number" name="r" min="0" max="255" value="64" required />
+          </label>
+          <label>
+            G
+            <input type="number" name="g" min="0" max="255" value="128" required />
+          </label>
+          <label>
+            B
+            <input type="number" name="b" min="0" max="255" value="192" required />
+          </label>
+          <button type="submit">Convert</button>
+        </form>
+        <div class="result">
+          <span>Hex:</span>
+          <output id="rgbToHex">#4080c0</output>
+          <span id="rgbToHexSwatch" class="swatch" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Hex → RGB</h2>
+        <form id="hexForm" class="form">
+          <label class="wide">
+            Hex
+            <input type="text" name="hex" value="#ff8800" required />
+          </label>
+          <button type="submit">Convert</button>
+        </form>
+        <div class="result">
+          <span>RGB:</span>
+          <output id="hexToRgb">rgb(255, 136, 0)</output>
+          <span id="hexToRgbSwatch" class="swatch" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <section class="card tips">
+        <h2>API Endpoints</h2>
+        <ul>
+          <li><code>GET /api/rgb-to-hex?r=64&g=128&b=192</code></li>
+          <li><code>GET /api/hex-to-rgb?hex=%23ff8800</code></li>
+        </ul>
+      </section>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

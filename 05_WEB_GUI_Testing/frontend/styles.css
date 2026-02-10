@@ -1,0 +1,145 @@
+:root {
+  --bg: #0b1020;
+  --panel: #121a30;
+  --panel-2: #17213f;
+  --text: #e6ecff;
+  --muted: #aab4d6;
+  --accent: #ffb347;
+  --accent-2: #7ad7ff;
+  --border: rgba(255, 255, 255, 0.08);
+  --shadow: 0 18px 60px rgba(5, 8, 18, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 20% 20%, #1a2448, #0b1020 55%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 48px 20px 80px;
+}
+
+.page {
+  width: min(960px, 100%);
+  display: grid;
+  gap: 24px;
+}
+
+.hero {
+  background: linear-gradient(135deg, rgba(255, 179, 71, 0.15), rgba(122, 215, 255, 0.1));
+  padding: 32px;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.lead {
+  margin: 0;
+  color: var(--muted);
+}
+
+.card {
+  background: var(--panel);
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 16px;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  align-items: end;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+label.wide {
+  grid-column: 1 / -1;
+}
+
+input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #10223a;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+}
+
+output {
+  font-weight: 600;
+}
+
+.swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #4080c0;
+}
+
+.tips ul {
+  margin: 0;
+  padding-left: 16px;
+  color: var(--muted);
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding: 24px;
+  }
+
+  .form {
+    grid-template-columns: 1fr;
+  }
+}
