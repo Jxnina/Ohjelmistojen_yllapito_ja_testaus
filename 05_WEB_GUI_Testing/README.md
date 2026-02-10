@@ -20,4 +20,5 @@ Avaa `05_WEB_GUI_Testing/frontend/index.html` selaimessa.
 ## Testaus
 
 Manuaaliset testit löytyvät: `05_WEB_GUI_Testing/tests/manual_test_cases.md`.
-Yksinkertainen API‑smoketestiskripti on: `05_WEB_GUI_Testing/tests/api_smoke.sh`
+
+Yksinkertainen API‑smoketestiskripti: `05_WEB_GUI_Testing/tests/api_smoke.sh`
