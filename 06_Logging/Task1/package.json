@@ -10,10 +10,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
-    "winston": "^3.11.0"
+    "winston": "3.11.0"
   },
   "devDependencies": {
-    "mocha": "^10.2.0"
+    "mocha": "10.2.0"
   }
 }
