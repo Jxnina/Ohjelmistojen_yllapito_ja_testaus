@@ -1,0 +1,66 @@
+# Tehtävä 2 - Tally Counter REST API
+
+Tässä tehtävässä tein Express-sovelluksen, jossa on muistissa pidettävä laskuri ja Winston-lokitus.
+
+## Käytetyt versiot
+
+- Node.js: 18
+- Express: 4.18.2
+- Winston: 3.11.0
+- Mocha: 10.2.0
+
+## Mitä olen tehnyt
+
+- `src/main.js` käynnistää palvelimen.
+- Reitit on erotettu tiedostoon `src/routes.js`, jotta rakenne on selkeä ja testattava.
+- Laskurin toiminnallisuus on tiedostossa `src/counter.js`:
+  - lukeminen
+  - kasvatus yhdellä
+  - nollaus
+- Logger on tiedostossa `src/logger.js` samalla rakenteella kuin tehtävässä 1.
+- Lisäsin testit tiedostoon `test/counter.test.js`.
+
+## Asennus ja ajo
+
+1. Asenna riippuvuudet:
+
+```bash
+npm install
+```
+
+2. Käynnistä palvelin:
+
+```bash
+npm start
+```
+
+Oletusosoite on `http://localhost:3000`.
+
+## Endpointit
+
+- `GET /counter-increase` kasvattaa laskuria yhdellä ja palauttaa JSONin, esim. `{ "count": 1 }`
+- `GET /counter-read` palauttaa nykyisen arvon, esim. `{ "count": 1 }`
+- `GET /counter-reset` nollaa laskurin ja palauttaa `{ "count": 0 }`
+
+## Testaus
+
+Suorita testit:
+
+```bash
+npm test
+```
+
+## Lokitus
+
+Lokit kirjoitetaan:
+
+- konsoliin
+- tiedostoon `logs/error.log` (vain error-taso)
+- tiedostoon `logs/combined.log` (kaikki tasot)
+
+Tehtävän mukaiset lokimuodot:
+
+- `[MAIN] Starting`
+- `[MAIN] Stopping`
+- `[ENDPOINT] GET '/counter-read'`
+- `[COUNTER] increase 1`

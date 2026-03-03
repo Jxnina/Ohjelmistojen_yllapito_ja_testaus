@@ -1,0 +1,48 @@
+# Tehtävä 1 - Logging-kirjasto
+
+Tässä tehtävässä tein Node.js-sovellukseen Winston-lokituksen.
+
+## Käytetyt versiot
+
+- Node.js: 18
+- Winston: 3.11.0
+- Mocha: 10.2.0
+
+## Mitä olen tehnyt
+
+- Tein `src/logger.js`-tiedoston, jossa on Winstonin konfiguraatio.
+- Logger kirjoittaa lokit:
+  - konsoliin
+  - tiedostoon `logs/error.log` (vain error-taso)
+  - tiedostoon `logs/combined.log` (kaikki tasot)
+- Tein `src/main.js`-tiedostoon esimerkkilokit (`info`, `warn`, `error`).
+- Lisäsin testit tiedostoon `test/logger.test.js`.
+- Lisäsin `.gitignore`-tiedostoon `node_modules/` ja `logs/`, jotta ajon aikana syntyvät tiedostot eivät mene versionhallintaan.
+
+## Asennus ja ajo
+
+1. Asenna riippuvuudet:
+
+```bash
+npm install
+```
+
+2. Käynnistä ohjelma:
+
+```bash
+npm start
+```
+
+## Testaus
+
+Suorita testit:
+
+```bash
+npm test
+```
+
+## Odotettu lopputulos
+
+- Konsoliin tulee JSON-muotoiset lokirivit.
+- `logs/error.log` sisältää vain `error`-tason lokit.
+- `logs/combined.log` sisältää kaikki lokit (`info`, `warn`, `error`).
