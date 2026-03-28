@@ -1,6 +1,6 @@
 # Suggested issue reports
 
-Below are concrete defect candidates found during testing. Open these as separate GitHub issues in your public repository.
+Below are concrete defect candidates found during testing.
 
 ## 1) divide returns wrong result
 

@@ -1,15 +1,12 @@
-# Kirjaston testausprojekti
+# AT00BY10-kirjaston testausprojekti
 
-Coveralls badge:
-[![Coverage Status](https://coveralls.io/repos/github/Jxnina/Ohjelmistojen_yllapito_ja_testaus/badge.svg?branch=main)](https://coveralls.io/github/Jxnina/Ohjelmistojen_yllapito_ja_testaus?branch=main)
-
-Tahan projektiin on toteutettu kurssitehtavan vaatimat yksikkotestit, CI-putki ja kattavuusraportointi.
+Tahan projektiin on toteutettu tehtavan vaatimat yksikkotestit, CI-putki ja kattavuusraportointi.
 
 ## Mitä olen tehnyt
 
 - Tein unit-testit Node.js:n omalla testirunnerilla (`node:test`).
 - Lisasin kattavuusajon `c8`-tyokalulla.
-- Rajasin `.internal`-kansion pois kattavuudesta tehtavan ohjeen mukaan.
+- Rajasin `.internal`-kansion pois kattavuudesta ohjeen mukaan.
 - Tein GitHub Actions -workflowin, joka ajaa testit automaattisesti.
 - Lisasin Coveralls-uploadauksen workflowhun.
 - Kirjoitin loydetyista virheista valmiin issue-listan tiedostoon `docs/issues-to-report.md`.
@@ -59,7 +56,11 @@ Pipeline tekee seuraavat vaiheet:
 
 ## Coveralls
 
-Kun repo on liitetty Coverallsiin, GitHub Actions lahettaa kattavuusraportin automaattisesti.
+Badge:
+
+```md
+[![Coverage Status](https://coveralls.io/repos/github/Jxnina/Ohjelmistojen_yllapito_ja_testaus/badge.svg?branch=main)](https://coveralls.io/github/Jxnina/Ohjelmistojen_yllapito_ja_testaus?branch=main)
+```
 
 ## Testatut tiedostot
 
@@ -72,10 +73,10 @@ Esimerkkeja testatuista moduuleista:
 
 ## Bugihavainnot
 
-Osa testeista on merkitty `skip`-tilaan, koska ne kuvaavat odotettua toimintaa tilanteissa joissa kirjastossa on selva bugi.
+Osa testeista on merkitty `skip`-tilaan, koska ne kuvaavat odotettua toimintaa tilanteissa, joissa kirjastossa on selva bugi.
 
 - Nain CI pysyy vihreana.
-- Samalla opettaja ja arvioija nakevat, mita virheita testauksessa loytyi.
+- Samalla nahdaan, mita virheita testauksessa loytyi.
 
 Issue-ehdotukset loytyvat tiedostosta:
 
