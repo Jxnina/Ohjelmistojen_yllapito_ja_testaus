@@ -1,5 +1,7 @@
 # AT00BY10-kirjaston testausprojekti
 
+[![Coverage Status](https://coveralls.io/repos/github/Jxnina/Ohjelmistojen_yllapito_ja_testaus/badge.svg?branch=main)](https://coveralls.io/github/Jxnina/Ohjelmistojen_yllapito_ja_testaus?branch=main)
+
 Tahan projektiin on toteutettu kurssitehtavan vaatimat yksikkotestit, CI-putki ja kattavuusraportointi.
 
 ## Mitä olen tehnyt
@@ -57,12 +59,6 @@ Pipeline tekee seuraavat vaiheet:
 ## Coveralls
 
 Kun repo on liitetty Coverallsiin, GitHub Actions lahettaa kattavuusraportin automaattisesti.
-
-Badge (vaihda oma user/repo):
-
-```md
-[![Coverage Status](https://coveralls.io/repos/github/<oma-user>/<oma-repo>/badge.svg?branch=main)](https://coveralls.io/github/<oma-user>/<oma-repo>?branch=main)
-```
 
 ## Testatut tiedostot
 
