@@ -64,7 +64,7 @@ test('toInteger palauttaa kokonaisluvun', () => {
 })
 
 // Alla on bugitestit. Ne on merkitty skip-tilaan, jotta CI ei kaadu,
-// mutta arvioija nakee suoraan mita virheita testauksessa loydettiin.
+// mutta. nahdaan suoraan mita virheita testauksessa loydettiin.
 
 test('BUG: chunkin pitaisi jakaa [a,b,c,d] koossa 2 oikein (issue #3)', { skip: 'Known defect' }, () => {
   assert.deepEqual(chunk(['a', 'b', 'c', 'd'], 2), [['a', 'b'], ['c', 'd']])

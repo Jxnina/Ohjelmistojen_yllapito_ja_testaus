@@ -39,7 +39,7 @@ test('words pilkkoo merkkijonon sanoiksi', () => {
   assert.deepEqual(words('fred, barney, & pebbles', /[^, ]+/g), ['fred', 'barney', '&', 'pebbles'])
 })
 
-// Bugitestit skip-tilassa, jotta ne dokumentoivat loydetyt virheet ilman CI-rikkoa.
+// Bugitestit skip-tilassa, jotta ne dokumentoivat loydetyt virheet ilman että CI menee rikki.
 
 test('BUG: camelCase ei saisi lisata alkuun valilyontia (issue #7)', { skip: 'Known defect' }, () => {
   assert.equal(camelCase('Foo Bar'), 'fooBar')
