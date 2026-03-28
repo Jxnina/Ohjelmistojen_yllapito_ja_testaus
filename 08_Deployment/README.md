@@ -1,4 +1,4 @@
-# AT00BY10-kirjaston testausprojekti
+# Kirjaston testausprojekti
 
 Coveralls badge:
 [![Coverage Status](https://coveralls.io/repos/github/Jxnina/Ohjelmistojen_yllapito_ja_testaus/badge.svg?branch=main)](https://coveralls.io/github/Jxnina/Ohjelmistojen_yllapito_ja_testaus?branch=main)
