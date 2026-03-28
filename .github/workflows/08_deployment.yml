@@ -1,12 +1,22 @@
-name: Test and Coverage
+name: 08 Deployment Tests
 
 on:
   push:
+    paths:
+      - '08_Deployment/**'
+      - '.github/workflows/08_deployment.yml'
   pull_request:
+    paths:
+      - '08_Deployment/**'
+      - '.github/workflows/08_deployment.yml'
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: 08_Deployment
 
     steps:
       - name: Checkout
@@ -17,6 +27,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: 08_Deployment/package-lock.json
 
       - name: Install dependencies
         run: npm ci
@@ -28,4 +39,4 @@ jobs:
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          file: coverage/lcov.info
+          file: 08_Deployment/coverage/lcov.info
