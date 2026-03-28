@@ -117,7 +117,7 @@ Kattavuusraportti muodostuu lokaalisti hakemistoon:
 
 GitHub Actions -workflow on tiedostossa:
 
-- `.github/workflows/08_deployment.yml`
+- `.github/workflows/ci.yml`
 
 Workflow käynnistyy tapahtumista:
 
