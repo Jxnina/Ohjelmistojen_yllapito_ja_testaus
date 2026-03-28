@@ -2,7 +2,7 @@
 
 ## 1. Lähestymistapa
 
-Tässä tehtävässä testasin annetun AT00BY10-kirjaston yksikkötesteillä. Toteutin testit Node.js:n omalla testirunnerilla (`node:test`) ja mittasin kattavuutta `c8`-työkalulla.
+Tässä tehtävässä testasin annetun AT00BY10-kirjaston yksikkötesteillä. Testit toteutin Node.js:n omalla testirunnerilla (`node:test`) ja kattavuuden mittasin `c8`-työkalulla.
 
 Tavoitteena oli:
 
@@ -12,7 +12,7 @@ Tavoitteena oli:
 - lähettää kattavuusraportit Coverallsiin
 - dokumentoida löydetyt virheet issue-raportteina
 
-Testit on jaettu kolmeen tiedostoon aihealueittain:
+Jaoin testit kolmeen tiedostoon aihealueittain:
 
 - `test/math-array.test.js`
 - `test/object-collection.test.js`
@@ -20,10 +20,10 @@ Testit on jaettu kolmeen tiedostoon aihealueittain:
 
 Testeissä on kaksi osaa:
 
-1. läpipitävät yksikkötestit, joilla varmistetaan kirjaston toimivia peruskäyttötapauksia
+1. läpipitävät yksikkötestit, joilla varmistetaan kirjaston tavallisia käyttötapauksia
 2. skipatut bugitestit, jotka dokumentoivat testauksessa löydettyjä virheitä rikkomatta CI-putkea
 
-Ratkaisu valittiin siksi, että tehtävässä piti sekä toteuttaa toimiva testiputki että raportoida löydetyt ongelmat. Skipatut bugitestit näyttävät konkreettisesti, mitä odotettua toimintaa kirjasto ei tällä hetkellä täytä.
+Valitsin tämän ratkaisun siksi, että tehtävässä piti sekä toteuttaa toimiva testiputki että raportoida löydetyt ongelmat. Skipatut bugitestit näyttävät konkreettisesti, mitä kirjaston olisi odotettu tekevän, mutta mitä se ei nykyisellään tee oikein.
 
 ## 2. Ympäristö ja konfiguraatio
 
@@ -34,15 +34,15 @@ Ratkaisu valittiin siksi, että tehtävässä piti sekä toteuttaa toimiva testi
 - Kattavuuskomento: `npm run test:coverage`
 - Kattavuustyökalu: `c8`
 
-Projektin testauskonfiguraatio on määritelty `package.json`-tiedostossa. Kattavuusajo käyttää seuraavaa komentoa:
+Testauskonfiguraatio on määritelty `package.json`-tiedostossa. Kattavuusajo käyttää seuraavaa komentoa:
 
 ```bash
 c8 --reporter=text-summary --reporter=lcov --exclude='src/.internal/**' --exclude='src/LICENSE' node --test
 ```
 
-`.internal`-kansio on siis rajattu pois kattavuuslaskennasta tehtävänannon mukaisesti.
+`.internal`-kansio on rajattu pois kattavuuslaskennasta tehtävänannon mukaisesti.
 
-Lisäksi repossa on `.gitignore`, jossa on rajattu pois ainakin:
+Lisäksi repossa on `.gitignore`, jossa on rajattu pois:
 
 - `node_modules/`
 - `coverage/`
@@ -52,7 +52,7 @@ Lisäksi repossa on `.gitignore`, jossa on rajattu pois ainakin:
 
 ## 3. Yksikkötestien toteutus
 
-Yksikkötestit kattavat kirjaston useita julkisia moduuleja. Testeissä tarkastetaan sekä tavallisia käyttötapauksia että muutamia reunaehtoja.
+Yksikkötestit kattavat kirjaston useita julkisia moduuleja. Testeissä tarkastetaan tavallisia käyttötapauksia sekä joitakin reunaehtoja.
 
 ### Testien rakenne
 
@@ -65,20 +65,20 @@ Yksikkötestit kattavat kirjaston useita julkisia moduuleja. Testeissä tarkaste
 
 ### Lokaalit testitulokset
 
-Komennolla:
+Ajoin testit komennolla:
 
 ```bash
 npm test
 ```
 
-saatiin seuraava tulos:
+Tuloksena oli:
 
 - testejä yhteensä: 33
 - läpäistyjä: 23
 - epäonnistuneita: 0
 - skipattuja bugitestejä: 10
 
-Skipatut testit dokumentoivat löydettyjä virheitä seuraavissa moduuleissa:
+Skipatut testit dokumentoivat löydettyjä virheitä ainakin seuraavissa moduuleissa:
 
 - `divide`
 - `clamp`
@@ -99,14 +99,14 @@ Kattavuus ajettiin komennolla:
 npm run test:coverage
 ```
 
-Lokaalisti saadut tulokset olivat:
+Lokaalisti saadut tulokset olivat seuraavat:
 
 - Statements: `94.08 %`
 - Branches: `75.11 %`
 - Functions: `83.33 %`
 - Lines: `94.08 %`
 
-Kattavuus ylittää selvästi tehtävänannon vähimmäisvaatimuksen `60 %`.
+Kattavuus ylittää selvästi vähimmäisvaatimuksen `60 %`.
 
 Kattavuusraportti muodostuu lokaalisti hakemistoon:
 
@@ -117,7 +117,7 @@ Kattavuusraportti muodostuu lokaalisti hakemistoon:
 
 GitHub Actions -workflow on tiedostossa:
 
-- `.github/workflows/ci.yml`
+- `.github/workflows/08_deployment.yml`
 
 Workflow käynnistyy tapahtumista:
 
@@ -132,16 +132,17 @@ Putken vaiheet ovat:
 4. testien ja kattavuuden ajo komennolla `npm run test:coverage`
 5. kattavuusraportin lähetys Coverallsiin (`coverallsapp/github-action@v2`)
 
-Workflow täyttää tehtävänannon vähimmäisvaatimuksen siitä, että testit ja raportointi ajetaan automaattisesti, kun muutoksia pusketaan GitHubiin.
+Workflow täyttää tehtävänannon vaatimuksen: testit ja raportointi ajetaan automaattisesti, kun repositorioon pusketaan muutoksia.
 
-Lisää tähän palautusversioon GitHubista:
+Alla ovat kuvakaappaukset onnistuneesta workflow-ajosta sekä GitHub Actionsin testituloksista.
 
-- kuvakaappaus onnistuneesta workflow-ajosta
-- kuvakaappaus run-login testituloksista
+![Onnistunut GitHub Actions workflow](images/actions.png)
+
+![GitHub Actionsin testitulokset ja kattavuus](images/actions2.png)
 
 ## 6. Coveralls-integraatio
 
-Kattavuusraportin lähetys on konfiguroitu GitHub Actions -workflowhun käyttämällä GitHub Actionsin `GITHUB_TOKEN`-salaisuutta. Ratkaisu noudattaa tehtävänannon ohjetta siitä, ettei julkiseen repositorioon jätetä näkyviä tunnuksia tai tokeneita.
+Kattavuusraportin lähetys on konfiguroitu GitHub Actions -workflowhun käyttämällä GitHub Actionsin `GITHUB_TOKEN`-salaisuutta. Näin julkiseen repositorioon ei tarvitse tallentaa näkyviä tunnuksia tai tokeneita.
 
 Workflow lähettää tiedoston:
 
@@ -149,21 +150,16 @@ Workflow lähettää tiedoston:
 
 Coverallsiin.
 
-Lisää tähän palautusversioon Coverallsista:
+Kuvakaappaus Coveralls-raportista:
 
-- julkinen Coveralls-linkki
+![Coveralls-raportti](images/coveralls.png)
 
-tai
-
-- kuvakaappaus Coveralls-raportista
-
-Lisää myös README-tiedostoon omaa julkista repositoryasi vastaava Coveralls-badge.
 
 ## 7. Testatut ja testaamattomat tiedostot
 
 ### Testatut tiedostot
 
-Seuraaville julkisille moduuleille on vähintään perustason testejä:
+Seuraaville julkisille moduuleille on tehty vähintään perustason testejä:
 
 - `src/add.js`
 - `src/at.js`
@@ -211,18 +207,18 @@ Seuraaville julkisille moduuleille on vähintään perustason testejä:
 
 ### Testaamattomat tiedostot
 
-Seuraavat tiedostot tai tiedostoryhmät jäivät tarkoituksellisesti testauksen ulkopuolelle:
+Seuraavat tiedostot tai tiedostoryhmät jäivät tarkoituksella testauksen ulkopuolelle:
 
 - `src/.internal/*`
   - nämä on rajattu tehtävänannon mukaan testauksen ja kattavuusraportoinnin ulkopuolelle
 - `src/LICENSE`
   - ei ole varsinainen testattava ohjelmamoduuli
 
-Lisäksi kaikkia julkisia `src/`-hakemiston tiedostoja ei testattu erillisillä suorilla testeillä. Tässä ratkaisussa keskityttiin osajoukkoon, jolla saavutettiin vaadittu kattavuustaso ja samalla löydettiin selkeitä toiminnallisia virheitä.
-
+Lisäksi kaikkia julkisia `src/`-hakemiston tiedostoja ei testattu erillisillä suorilla testeillä. Tässä ratkaisussa keskityin sellaisiin, jolla saavutettiin vaadittu kattavuustaso ja samalla löytyi selkeitä toiminnallisia virheitä.
+ 
 ## 8. Löydetyt virheet ja issue-raportit
 
-Testauksen aikana löytyi useita loogisia ja toiminnallisia virheitä kirjaston julkisista API-funktioista. Näistä on koottu valmis issue-lista tiedostoon:
+Testauksen aikana löytyi useita loogisia ja toiminnallisia virheitä kirjaston julkisista API-funktioista. Näistä tein issue-ehdotukset tiedostoon:
 
 - `docs/issues-to-report.md`
 
@@ -239,24 +235,26 @@ Raportoitavat löydökset koskevat ainakin seuraavia moduuleja:
 - `src/isBuffer.js`
 - `src/toString.js`
 
-Lisää tähän palautusversioon GitHub-issueiden linkit, kun issuet on luotu julkiseen repositorioon:
+GitHub-issueiden linkit julkisessa repositoriossa:
 
-- Issue 1:
-- Issue 2:
-- Issue 3:
-- Issue 4:
-- Issue 5:
-- Issue 6:
-- Issue 7:
-- Issue 8:
-- Issue 9:
-- Issue 10:
+- Issue 1: https://github.com/Jxnina/Ohjelmistojen_yllapito_ja_testaus/issues/1
+- Issue 2: https://github.com/Jxnina/Ohjelmistojen_yllapito_ja_testaus/issues/2
+- Issue 3: https://github.com/Jxnina/Ohjelmistojen_yllapito_ja_testaus/issues/3
+- Issue 4: https://github.com/Jxnina/Ohjelmistojen_yllapito_ja_testaus/issues/4
+- Issue 5: https://github.com/Jxnina/Ohjelmistojen_yllapito_ja_testaus/issues/5
+- Issue 6: https://github.com/Jxnina/Ohjelmistojen_yllapito_ja_testaus/issues/6
+- Issue 7: https://github.com/Jxnina/Ohjelmistojen_yllapito_ja_testaus/issues/7
+- Issue 8: https://github.com/Jxnina/Ohjelmistojen_yllapito_ja_testaus/issues/8
+- Issue 9: https://github.com/Jxnina/Ohjelmistojen_yllapito_ja_testaus/issues/9
+- Issue 10: https://github.com/Jxnina/Ohjelmistojen_yllapito_ja_testaus/issues/10
 
-Lisää myös kuvakaappaus GitHubin issue-listasta tai yksittäisistä issueista.
+Kuvakaappaus GitHubin issue-listasta:
+
+![GitHub-issueet](images/issues.png)
 
 ## 9. Lopullinen arvio kirjastosta
 
-Nykyisellä testikattavuudella ja löydetyillä virheillä kirjasto ei ole valmis tuotantokäyttöön.
+Nykyisellä testikattavuudella ja löydetyillä virheillä kirjasto ei ole mielestäni valmis tuotantokäyttöön.
 
 Perustelut:
 
@@ -265,16 +263,4 @@ Perustelut:
 - Vaikka kattavuus on korkea, korkea kattavuus ei yksin riitä takaamaan laatua, jos testit paljastavat suoria toiminnallisia virheitä julkisissa rajapinnoissa.
 - Osa kirjaston julkisista moduuleista jäi edelleen ilman erillisiä suoria testejä, joten kaikkia mahdollisia ongelmia ei ole vielä löydetty.
 
-Yhteenvetona voidaan todeta, että kirjasto soveltuu tässä vaiheessa korkeintaan jatkokehityksen ja virheenkorjauksen kohteeksi, ei tuotantokäyttöön sellaisenaan.
-
-## 10. Mitä palautukseen vielä liitetään GitHubista ja Coverallsista
-
-Tähän dokumenttiin tulee ennen lopullista Moodle-palautusta lisätä vielä:
-
-- kuvakaappaus onnistuneesta GitHub Actions -workflow-ajosta
-- kuvakaappaus GitHub Actionsin testituloksista
-- kuvakaappaus GitHub-issueista
-- joko julkinen Coveralls-linkki tai kuvakaappaus Coveralls-raportista
-- mahdollinen README-kuvakaappaus, jossa Coveralls-badge näkyy
-
-Kun nämä ulkoiset todisteet on lisätty, dokumentti täyttää tehtävänannon raportointiosuuden.
+Yhteenvetona arvioisin, että kirjasto soveltuu tässä vaiheessa korkeintaan jatkokehityksen ja virheenkorjauksen kohteeksi, ei tuotantokäyttöön sellaisenaan.
